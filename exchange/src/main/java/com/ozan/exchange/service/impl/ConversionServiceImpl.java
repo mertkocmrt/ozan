@@ -12,6 +12,7 @@ import com.ozan.exchange.model.response.RateResponse;
 import com.ozan.exchange.repository.TransactionRepository;
 import com.ozan.exchange.service.ConversionService;
 import com.ozan.exchange.service.RateService;
+import com.ozan.exchange.service.TransactionService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -20,11 +21,11 @@ import java.math.BigDecimal;
 public class ConversionServiceImpl implements ConversionService {
 
     private final RateService rateService;
-    private final TransactionRepository transactionRepository;
+    private final TransactionService transactionService;
 
-    public ConversionServiceImpl(RateService rateService, TransactionRepository transactionRepository){
+    public ConversionServiceImpl(RateService rateService, TransactionService transactionService){
         this.rateService = rateService;
-        this.transactionRepository = transactionRepository;
+        this.transactionService = transactionService;
     }
 
     @Override
@@ -33,7 +34,7 @@ public class ConversionServiceImpl implements ConversionService {
 
         BigDecimal targetAmount = calculateAmount(amount, rateResponse.getExchangeRate().stream().findFirst().get());
 
-        Transaction transaction = transactionRepository.save(Transaction
+        Transaction transaction = transactionService.saveTransaction(Transaction
                         .builder()
                         .sourceAmount(amount)
                         .targetAmount(targetAmount)

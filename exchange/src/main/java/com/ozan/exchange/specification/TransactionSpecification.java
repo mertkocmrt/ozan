@@ -12,7 +12,7 @@ public class TransactionSpecification {
                 criteriaBuilder.equal(root.get("transactionId"), transactionId);
     }
 
-    public static Specification<Transaction> transactionDateEquals(Date transactionDate) {
+    public static Specification<Transaction> transactionDateEquals(String transactionDate) {
         return (root, query, criteriaBuilder) ->
                 criteriaBuilder.equal(root.get("transactionDate"), transactionDate);
     }

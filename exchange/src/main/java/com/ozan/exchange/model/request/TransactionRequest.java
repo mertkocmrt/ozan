@@ -9,7 +9,7 @@ import java.util.Date;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class TransactionRequest implements Serializable {
+public class TransactionRequest extends BaseRequest implements Serializable {
     private Long transactionId;
-    private Date transactionDate;
+    private String transactionDate;
 }

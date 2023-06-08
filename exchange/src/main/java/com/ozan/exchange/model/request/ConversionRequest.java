@@ -16,5 +16,5 @@ public class ConversionRequest implements Serializable {
     private String sourceCurrency;
     private String targetCurrency;
     @Builder.Default
-    private String transactionDate = new SimpleDateFormat("yyyy-mm-dd").format(new Date());
+    private String transactionDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 }
