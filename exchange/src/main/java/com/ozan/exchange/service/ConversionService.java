@@ -8,5 +8,5 @@ import java.math.BigDecimal;
 
 public interface ConversionService {
 
-//    ConversionResponse convert(BigDecimal amount, String sourceCurrency, String targetCurrency, String transactionDate);
+    ConversionResponse convert(BigDecimal amount, String sourceCurrency, String targetCurrency, String transactionDate);
 }

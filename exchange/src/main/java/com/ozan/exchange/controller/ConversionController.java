@@ -20,12 +20,12 @@ public class ConversionController {
         this.conversionService = conversionService;
     }
 
-//    @PostMapping
-//    @RequestMapping("convert")
-//    public ResponseEntity<ConversionResponse> convert(@RequestBody ConversionRequest request){
-//        return ResponseEntity.ok(conversionService.convert(request.getAmount(),
-//                request.getSourceCurrency(),
-//                request.getTargetCurrency(),
-//                request.getTransactionDate()));
-//    }
+    @PostMapping
+    @RequestMapping("convert")
+    public ResponseEntity<ConversionResponse> convert(@RequestBody ConversionRequest request){
+        return ResponseEntity.ok(conversionService.convert(request.getAmount(),
+                request.getSourceCurrency(),
+                request.getTargetCurrency(),
+                request.getTransactionDate()));
+    }
 }
