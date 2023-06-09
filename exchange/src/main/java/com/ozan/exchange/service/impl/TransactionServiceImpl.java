@@ -3,6 +3,7 @@ package com.ozan.exchange.service.impl;
 
 import com.ozan.exchange.enumation.ErrorEnum;
 import com.ozan.exchange.exception.ExchangeException;
+import com.ozan.exchange.mapper.TransactionConverter;
 import com.ozan.exchange.model.entity.Transaction;
 import com.ozan.exchange.model.response.TransactionResponse;
 import com.ozan.exchange.repository.TransactionRepository;
@@ -34,7 +35,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getTransactions(Long transactionId, String transactionDate, Pageable page) {
+    public List<TransactionResponse> getTransactions(Long transactionId, String transactionDate, Pageable page) {
 
         if(Objects.isNull(transactionId) && Objects.isNull(transactionDate)) {
             throw new ExchangeException(ErrorEnum.ALL_INPUTS_ARE_EMPTY_ERROR.name());
@@ -43,9 +44,10 @@ public class TransactionServiceImpl implements TransactionService {
         Page<Transaction> transactions = transactionRepository.findAll(where(transactionIdEquals(transactionId)).and(transactionDateEquals(transactionDate)), page);
 
         if(!transactions.isEmpty()){
-            return transactions.get().toList();
+            TransactionConverter transactionConverter = new TransactionConverter();
+            return transactionConverter.entityToResponse(transactions.get().toList());
+        } else {
+            throw new ExchangeException(ErrorEnum.TRANSACTION_NOT_FOUND.name());
         }
-
-        return null;
     }
 }

@@ -10,5 +10,5 @@ import java.util.List;
 public interface TransactionService {
 
     Transaction saveTransaction(Transaction transaction);
-    List<Transaction> getTransactions(Long transactionId, String transactionDate, Pageable page);
+    List<TransactionResponse> getTransactions(Long transactionId, String transactionDate, Pageable page);
 }

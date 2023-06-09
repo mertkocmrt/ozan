@@ -1,15 +1,8 @@
 package com.ozan.exchange.service.impl;
 
-import com.ozan.exchange.enumation.ErrorEnum;
-import com.ozan.exchange.exception.ExchangeException;
-import com.ozan.exchange.mapper.ConversionConverter;
-import com.ozan.exchange.mapper.RateConverter;
-import com.ozan.exchange.model.Rate;
 import com.ozan.exchange.model.entity.Transaction;
-import com.ozan.exchange.model.request.ConversionRequest;
 import com.ozan.exchange.model.response.ConversionResponse;
 import com.ozan.exchange.model.response.RateResponse;
-import com.ozan.exchange.repository.TransactionRepository;
 import com.ozan.exchange.service.ConversionService;
 import com.ozan.exchange.service.RateService;
 import com.ozan.exchange.service.TransactionService;
