@@ -2,14 +2,10 @@ package com.ozan.exchange.services;
 
 import com.ozan.exchange.exceptions.ExchangeException;
 import com.ozan.exchange.models.entity.Transaction;
-import com.ozan.exchange.models.response.ConversionResponse;
-import com.ozan.exchange.models.response.RateResponse;
 import com.ozan.exchange.models.response.TransactionResponse;
 import com.ozan.exchange.repositories.TransactionRepository;
 import com.ozan.exchange.services.impl.TransactionServiceImpl;
 import com.ozan.exchange.specifications.TransactionSpecification;
-import org.assertj.core.util.Lists;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,20 +16,15 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ozan.exchange.specifications.TransactionSpecification.findTransactionsBuilder;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
-import static org.springframework.data.jpa.domain.Specification.where;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(MockitoJUnitRunner.class)

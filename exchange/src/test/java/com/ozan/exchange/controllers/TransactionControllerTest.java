@@ -3,8 +3,6 @@ package com.ozan.exchange.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ozan.exchange.ExchangeApplication;
 import com.ozan.exchange.models.entity.Transaction;
-import com.ozan.exchange.models.request.ConversionRequest;
-import com.ozan.exchange.models.request.RateRequest;
 import com.ozan.exchange.models.request.TransactionRequest;
 import com.ozan.exchange.repositories.TransactionRepository;
 import org.junit.Before;
@@ -17,8 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.math.BigDecimal;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

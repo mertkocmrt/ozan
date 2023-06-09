@@ -3,7 +3,6 @@ package com.ozan.exchange.controllers;
 import com.ozan.exchange.models.request.RateRequest;
 import com.ozan.exchange.models.response.RateResponse;
 import com.ozan.exchange.services.RateService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,16 +1,12 @@
 package com.ozan.exchange.services;
 
-import com.ozan.exchange.exceptions.ExchangeException;
-import com.ozan.exchange.models.Rate;
 import com.ozan.exchange.models.entity.Transaction;
 import com.ozan.exchange.models.response.ConversionResponse;
 import com.ozan.exchange.models.response.RateResponse;
-import com.ozan.exchange.repositories.TransactionRepository;
 import com.ozan.exchange.services.impl.ConversionServiceImpl;
 import com.ozan.exchange.services.impl.RateServiceImpl;
 import com.ozan.exchange.services.impl.TransactionServiceImpl;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
