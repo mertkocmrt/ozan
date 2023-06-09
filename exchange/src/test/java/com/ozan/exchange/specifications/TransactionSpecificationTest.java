@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,60 +41,55 @@ public class TransactionSpecificationTest {
     public void transactionIdEquals_givenId_thenCorrect() {
         Transaction transaction = new Transaction(1L,"2023-06-09",null,null,null,null);
 
-        List<Transaction> results = transactionRepository.findAll(where(transactionIdEquals(transaction.getTransactionId())));
+        Page<Transaction> results = transactionRepository.findAll(where(transactionIdEquals(transaction.getTransactionId())), Pageable.unpaged());
 
         assertTrue(results
                 .stream()
-                .filter(t->t.getTransactionId().equals(transaction.getTransactionId()))
-                .map(t->t.getTransactionId()).findAny().isPresent());
+                .filter(t->t.getTransactionId().equals(transaction.getTransactionId())).findAny().isPresent());
     }
 
     @Test
     public void transactionDateEquals_givenDate_thenCorrect() {
         Transaction transaction = new Transaction(1L,"2023-06-09",null,null,null,null);
 
-        List<Transaction> results = transactionRepository.findAll(where(transactionDateEquals(transaction.getTransactionDate())));
+        Page<Transaction> results = transactionRepository.findAll(where(transactionDateEquals(transaction.getTransactionDate())), Pageable.unpaged());
 
         assertTrue(results
                 .stream()
-                .filter(t->t.getTransactionDate().equals(transaction.getTransactionDate()))
-                .map(t->t.getTransactionDate()).findAny().isPresent());
+                .filter(t->t.getTransactionDate().equals(transaction.getTransactionDate())).findAny().isPresent());
     }
 
     @Test
     public void findTransactionsBuilder_givenDate_thenCorrect() {
         Transaction transaction = new Transaction(null,"2023-06-09",null,null,null,null);
 
-        List<Transaction> results = transactionRepository.findAll(where(findTransactionsBuilder(transaction.getTransactionId(),transaction.getTransactionDate())));
+        Page<Transaction> results = transactionRepository.findAll(where(findTransactionsBuilder(transaction.getTransactionId(),transaction.getTransactionDate())), Pageable.unpaged());
 
         assertTrue(results
                 .stream()
-                .filter(t->t.getTransactionDate().equals(transaction.getTransactionDate()))
-                .map(t->t.getTransactionDate()).findAny().isPresent());
+                .filter(t->t.getTransactionDate().equals(transaction.getTransactionDate())).findAny().isPresent());
     }
 
     @Test
     public void findTransactionsBuilder_givenId_thenCorrect() {
         Transaction transaction = new Transaction(1L,null,null,null,null,null);
 
-        List<Transaction> results = transactionRepository.findAll(where(findTransactionsBuilder(transaction.getTransactionId(),transaction.getTransactionDate())));
+        Page<Transaction> results = transactionRepository.findAll(where(findTransactionsBuilder(transaction.getTransactionId(),transaction.getTransactionDate())), Pageable.unpaged());
 
         assertTrue(results
                 .stream()
-                .filter(t->t.getTransactionId().equals(transaction.getTransactionId()))
-                .map(t->t.getTransactionId()).findAny().isPresent());
+                .filter(t->t.getTransactionId().equals(transaction.getTransactionId())).findAny().isPresent());
     }
 
     @Test
     public void findTransactionsBuilder_givenIdAndGivenDate_thenCorrect() {
         Transaction transaction = new Transaction(1L,"2023-06-09",null,null,null,null);
 
-        List<Transaction> results = transactionRepository.findAll(where(findTransactionsBuilder(transaction.getTransactionId(),transaction.getTransactionDate())));
+        Page<Transaction> results = transactionRepository.findAll(where(findTransactionsBuilder(transaction.getTransactionId(),transaction.getTransactionDate())), Pageable.unpaged());
 
         assertTrue(results
                 .stream()
                 .filter(t->t.getTransactionDate().equals(transaction.getTransactionDate()))
-                .filter(t->t.getTransactionId().equals(transaction.getTransactionId()))
-                .map(t->t.getTransactionDate()).findAny().isPresent());
+                .filter(t->t.getTransactionId().equals(transaction.getTransactionId())).findAny().isPresent());
     }
 }
